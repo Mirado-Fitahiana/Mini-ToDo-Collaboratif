@@ -9,9 +9,9 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from todo.serializers import RegisterSerializer
 
-# Create your views here.
 class RegisterView(APIView):
    def post(self, request):
+        permission_classes = [permissions.AllowAny]
         serializer = RegisterSerializer(data=request.data)
         
         # Validation des données
