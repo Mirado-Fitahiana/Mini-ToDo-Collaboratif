@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from todo.models import Tache
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -16,3 +17,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             last_name=validated_data.get('last_name', '')
         )
         return user
+    
+class TacheSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tache
+        fields = ['id', 'id_user', 'id_attributeur', 'description', 'priorite', 'date_attribution', 'date_modification']
+        
