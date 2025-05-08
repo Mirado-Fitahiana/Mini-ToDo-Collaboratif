@@ -1,9 +1,11 @@
 Pour lancer le projet backend :
 
   1-Créer un environnement virtuel :
+  
      python -m venv venv
 
   2-Activer l'environnement virtuel :
+  
     Windows (PowerShell) PS: venv/Scripts/activate
     
     Windows (CMD) : .\venv\Scripts\activate.bat
@@ -11,24 +13,30 @@ Pour lancer le projet backend :
     Linux/Mac : source venv/bin/activate
 
   3-Installer les dépendances :
+  
     pip -r requirements.txt
     
   4-Faire les migrations :
+  
     python manage.py makemigrations todo
     python manage.py migrate
-    Si cela ne fonctionne pas :
+    
+  Si cela ne fonctionne pas :
       Supprime le dossier migrations dans le projet todo.
       Relance les commandes de migration.
 
   5-Lancer le serveur :
+  
     python manage.py runserver
 
 Pour lancer le projet frontend :
 
   1- Installer les dépendances :
+  
     npm install
     
   2-Lancer le projet :
+  
     npm start
 
 Voici les interfaces que j'ai creer 
