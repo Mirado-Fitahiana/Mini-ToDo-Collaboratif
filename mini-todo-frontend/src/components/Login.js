@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
+import { TextField, Button, Typography, Alert, Avatar, Grid, Paper } from '@mui/material';
+import { LockOutlined } from '@mui/icons-material';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { URL_LOGIN } from '../Constante';
+
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -26,34 +28,46 @@ function Login() {
     };
 
     return (
-        <Container maxWidth="sm">
-            <Box my={5} p={4} bgcolor="white" boxShadow={3} borderRadius={2}>
-                <Typography variant="h4" align="center" gutterBottom>Connexion</Typography>
-                {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-                <form onSubmit={handleLogin}>
-                    <TextField
-                        label="Nom d'utilisateur"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <TextField
-                        label="Mot de passe"
-                        variant="outlined"
-                        type="password"
-                        fullWidth
-                        margin="normal"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
-                        Se connecter
+        <Grid container justifyContent="center" alignItems="center" sx={{ minHeight: '100vh' }}>
+            <Grid item xs={11} sm={8} md={4} lg={3}>
+                <Paper elevation={10} sx={{ p: 4, borderRadius: 3 }}>
+                    <Grid container direction="column" alignItems="center">
+                        <Avatar sx={{ bgcolor: 'primary.main', mb: 2 }}>
+                            <LockOutlined />
+                        </Avatar>
+                        <Typography variant="h5" gutterBottom>Connexion</Typography>
+                    </Grid>
+
+                    {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+
+                    <form onSubmit={handleLogin}>
+                        <TextField
+                            label="Nom d'utilisateur"
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <TextField
+                            label="Mot de passe"
+                            variant="outlined"
+                            type="password"
+                            fullWidth
+                            margin="normal"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2, mb: 2 }}>
+                            Se connecter
+                        </Button>
+                    </form>
+                    <Button component={Link} to="/register" variant="text" color="secondary" fullWidth>
+                        Créer un compte
                     </Button>
-                </form>
-            </Box>
-        </Container>
+                </Paper>
+            </Grid>
+        </Grid>
     );
 }
 
