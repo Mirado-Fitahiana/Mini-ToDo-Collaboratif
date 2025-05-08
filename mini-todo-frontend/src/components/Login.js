@@ -18,7 +18,7 @@ function Login() {
             });
             localStorage.setItem('access', response.data.access);
             localStorage.setItem('refresh', response.data.refresh);
-            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('user', JSON.stringify(response.data));
             navigate('/taches');
         } catch (err) {
             setError(`Nom d'utilisateur ou mot de passe incorrect`);
