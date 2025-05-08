@@ -6,6 +6,7 @@ from todo.models import Tache
 from todo.serializers import RegisterSerializer, TacheSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.contrib.auth.models import User
 
 from todo.serializers import RegisterSerializer
 
@@ -73,3 +74,39 @@ class TacheViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    def list_users(self, request):
+        users = User.objects.all()
+        user_list = [{
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name
+        } for user in users]
+        return Response(user_list, status=status.HTTP_200_OK)
+    
+    def get_user_by_id(self, request, user_id=None):
+        try:
+            user = User.objects.get(id=user_id)
+            user_data = {
+                "id": user.id,
+                "username": user.username,
+                "email": user.email,
+                "first_name": user.first_name,
+                "last_name": user.last_name
+            }
+            return Response(user_data, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({"error": "Utilisateur introuvable"}, status=status.HTTP_404_NOT_FOUND)
+
+
+    def list_taches_by_user(self, request, user_id=None):
+        taches = Tache.objects.filter(id_user=user_id)
+        serializer = self.get_serializer(taches, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def list_taches_by_attributeur(self, request, attributeur_id=None):
+        taches = Tache.objects.filter(id_attributeur=attributeur_id)
+        serializer = self.get_serializer(taches, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
