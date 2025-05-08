@@ -37,6 +37,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
         
         data.update({
+            "id": self.user.id,
             "username": self.user.username,
             "email": self.user.email,
             "first_name": self.user.first_name,
