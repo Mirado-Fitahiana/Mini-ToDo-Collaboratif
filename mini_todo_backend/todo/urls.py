@@ -27,5 +27,9 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginView.as_view(), name='login'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('users/', TacheViewSet.as_view({'get': 'list_users'}), name='list-users'),
+    path('taches/user/<int:user_id>/', TacheViewSet.as_view({'get': 'list_taches_by_user'}), name='list-taches-by-user'),
+    path('taches/attributeur/<int:attributeur_id>/', TacheViewSet.as_view({'get': 'list_taches_by_attributeur'}), name='list-taches-by-attributeur'),
+    path('users/<int:user_id>/', TacheViewSet.as_view({'get': 'get_user_by_id'}), name='get-user-by-id'),
     path('', include(router.urls)),
 ]
