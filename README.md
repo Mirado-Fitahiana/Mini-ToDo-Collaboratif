@@ -6,11 +6,17 @@ Pour lancer le projet backend :
 
   2-Activer l'environnement virtuel :
   
-    Windows (PowerShell) PS: venv/Scripts/activate
+  Windows (PowerShell) PS:
+      
+      venv/Scripts/activate
     
-    Windows (CMD) : .\venv\Scripts\activate.bat
+  Windows (CMD) : 
     
-    Linux/Mac : source venv/bin/activate
+      .\venv\Scripts\activate.bat
+    
+  Linux/Mac : 
+      
+      source venv/bin/activate
 
   3-Installer les dépendances :
   
