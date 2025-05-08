@@ -16,3 +16,6 @@ to run the front-end project
     npm install
   2-run the project
     npm start
+
+
+![image](https://github.com/user-attachments/assets/d5db6310-2728-42a5-9e25-5e323f12cb41)
