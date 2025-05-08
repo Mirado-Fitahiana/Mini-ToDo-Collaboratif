@@ -7,6 +7,7 @@ to run the backend project
   4-do migration
     python manage.py makemigrations todo
     python manage.py migrate
+      if doesn't work delete folder migration in the todo project and re run the command
   5-run the project
     python manage.py runserver
 
